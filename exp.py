@@ -44,15 +44,14 @@ def trick ():
     print ">Multiply the current result of your calculations by 50"
     print ">Add the number of the month of your birthday to the result of your calculations (e.g. January - 1; February - 2 etc.)"
     print ">Enter the result of your calculations"
-        
-def x():
-    print "*thinking hard*"
-    print (">Alakazam! Your birthday is on " + day + monthsname [month-1])
+  
     x = raw_input("> ")
     y = x - 250
     day = y / 100
     month = y % 100
     monthsname = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
+	
+    print (">Alakazam! Your birthday is on " + day + monthsname [month-1])
 
 def end ():
     print ">Are you impressed by my terrific might " + yourname + " ?"
