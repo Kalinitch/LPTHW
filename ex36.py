@@ -84,7 +84,7 @@ def start():
     print "Hello, what's your name?"
 
     yourname = raw_input("> ")
-    print ("Nice to meet you " + yourname + "!")
+    print "Nice to meet you %s !" %yourname
     sleep(2)
     print "My name is Homer 2000"
     sleep(2)
