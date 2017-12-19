@@ -1,11 +1,12 @@
 from sys import exit
 from random import randint
 
+
 class Scene(object):
 
     def enter (self):
         print "It's just another foggy, cold, miserable day, you alarm clook goes off marking the beggning of yet another working day."
-        pass
+        exit(1)
 
 class Engine(object):
 
@@ -22,7 +23,7 @@ class Engine(object):
 
         current_scene.enter()
 
-class Life_Owned(Scene):
+class Owned(Scene):
 
     quips = [
         "Now when you work in Google inc. you have reached the top of the tops, now you can die in peace"
@@ -31,16 +32,20 @@ class Life_Owned(Scene):
     ]
 
     def enter (self):
-        print Death.quips[randint(0, len(self.quips) -1)]
+        print Owned.quips[randint(0, len(self.quips) -1)]
         exit(1)
 
 class Homeless(Scene):
 
-    def enter(self):
+    quips = [
+        "Now that you have decided to stay in your bed fprever, your life haas gone by unnoticed. Day was followed by night, night by day until your landlord got fed up with you and now you live on the street, congrats!."
+        "Wll. You surely had a good nights sleep, but no friends and work, what a way to live!"
+        "Your life has went downhill ever since, you never manage to be as successful as your groupmates"
+    ]
 
-        quips = [
-            "Now that you have decided to stay in your bed fprever, your life haas gone by unnoticed. Day was followed by night, night by day until your landlord got fed up with you and now you live on the street, congrats!."
-            "Wll. You surely had a good nights sleep, but no friends and work, what a way to live!"
+    def enter(self):
+        print Homeless.quips[randint(0, len(self.quips)-1)]
+        exit(1)
 
 class Out(Scene):
     def enter(self):
@@ -56,7 +61,7 @@ class Out(Scene):
         if action == "have some rest":
             return 'homeless'
 
-        if action == "have a shower":
+        elif action == "have a shower":
             print "You get out of you room and approcah the bathroom"
             print "You hear the sounds of water splashing"
             print "Seems like your flatmate has occupied the bathroom"
@@ -65,9 +70,15 @@ class Out(Scene):
             action = raw_input("> ")
 
             if action == "give up and go to have some breakfast":
-                return 'breakfast'
+                print "you decide to go to the class with greezy hair but you decide that you at least to need to feed yourself"
+                print "you have a toast with a piece of bread and a cup of coffee"
+                print "you manage to catch the bus"
+                print "you enter the classroom, you feel like you look a bit clumsy, but since you had breakfast you have a shinning smile"
+                print "everyone seem to admire you, you look fabulous"
 
-            if action == "knock on the door":
+                return 'owned'
+
+            elif action == "knock on the door":
                 print "You timidly knock on the door and ask your flatmate how long their are going to stay in the shower"
                 print "You hear the water stop flowing"
                 print "Several moments pass"
@@ -80,12 +91,38 @@ class Out(Scene):
 
                 return 'morning'
 
-            if action == "leave the house like this":
+            elif action == "leave the house like this":
                 print "You decide to leave the house with greezy head and no breakfast"
                 print "You manage to catch the bus, good job!"
-                print "You get in the classroom and take a seet as usual"
+                print "You get in the classroom and take a seat as usual"
+                print "After some time you start noticing unfiendly scornful glances, no wonder since you haven't washed your hair"
+                print "It even gets worse because you left the house hungry"
+                print "Your belly makes embarssing noises"
+                print "Can this day become even worse?"
+                print "You get kicked in out of the class for being not fabulous enough"
 
+                return 'homeless'
 
+        elif action == "have breakfast":
+            print "you decide to go to the class with greezy hair but you decide that you at least to need to feed yourself"
+            print "you have a toast with a piece of bread and a cup of coffee"
+            print "you manage to catch the bus"
+            print "you enter the classroom, you feel like you look a bit clumsy, but since you had breakfast you have a shinning smile"
+            print "everyone seem to admire you, you look fabulous"
+
+            return 'owned'
+
+        elif action == "dress up and leave the house":
+            print "You decide to leave the house with greezy head and no breakfast"
+            print "You manage to catch the bus, good job!"
+            print "You get in the classroom and take a seat as usual"
+            print "After some time you start noticing unfiendly scornful glances, no wonder since you haven't washed your hair"
+            print "It even gets worse because you left the house hungry"
+            print "Your belly makes embarssing noises"
+            print "Can this day become even worse?"
+            print "You get kicked in out of the class for being not fabulous enough"
+
+            return 'homeless'
 
 class Morning(Scene):
 
@@ -130,7 +167,7 @@ class Finished(self):
 
 class Map(object):
     scenes = {
-    'life_owned': Life_Owned(),
+    'owned': Owned(),
     'homeless': Homeless(),
     'Out': Out(),
     'Morning': Morning(),
