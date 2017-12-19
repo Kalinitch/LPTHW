@@ -56,7 +56,7 @@ class Out(Scene):
         print "You have 20 minutes until the bus leaves"
         print "What do you do? have some rest/have a shower/have breakfast/dress up and leave the house"
 
-        action = raw_input("> )
+        action = raw_input("> ")
 
         if action == "have some rest":
             return 'homeless'
@@ -146,7 +146,7 @@ class Morning(Scene):
             elif action == "ignore":
                 return 'homeless'
 
-            elif == "get up":
+            elif action == "get up":
                 return 'out'
 
         elif action == "ignore":
@@ -159,11 +159,11 @@ class Morning(Scene):
             print "Better think again!"
             return 'morning'
 
-class Finished(self):
+class Finished(Scene):
 
     def enter(self):
         print "You have achived a total harmony with yourself. Good job!"
-        return 'finished'
+        return 'Finished'
 
 class Map(object):
     scenes = {
