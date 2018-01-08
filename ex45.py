@@ -1,7 +1,6 @@
 from sys import exit
 from random import randint
 
-
 class Scene(object):
 
     def enter (self):
@@ -163,9 +162,10 @@ class Finished(Scene):
 
     def enter(self):
         print "You have achived a total harmony with yourself. Good job!"
-        return 'Finished'
+        return 'finished'
 
 class Map(object):
+
     scenes = {
     'owned': Owned(),
     'homeless': Homeless(),
