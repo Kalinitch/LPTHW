@@ -1,4 +1,4 @@
-class Roon(object):
+class Room(object):
 
     def __init__(self, name, description):
         self.name = name
