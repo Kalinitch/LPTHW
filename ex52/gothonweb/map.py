@@ -15,6 +15,17 @@ class Scene(object):
         self.paths.update(paths)
 
 # Create the scenes of the game
+#Instructions
+welcome = Scene("Welcome", "welcome",
+"""
+Welcome to the 'Big decisions game!
+In this game you are going to make...same big decisions.
+The outcome of the game depends on your choice.
+Foe each scene you are given a choice in brackets.
+To proceed from one scene to another please type in your choice below.
+Redy to begin? (type 'yes' to proceed)
+""")
+
 # Scene 1 - Beginning
 morning = Scene("Morning", "morning",
 """
@@ -32,7 +43,7 @@ However you still feel like you could use some rest.
 You also notice that your hair need washing
 And you're humgry
 You have 20 minutes until the bus leaves
-What do you do? (have some rest/have a shower/have breakfast/dress up and leave the house)
+What do you do? (have some rest/have a shower/have breakfast/leave the house)
 """)
 # Scene 2, Branch 2 - have a shower
 have_a_shower = Scene("Have a shower", "have_a_shower",
@@ -47,12 +58,9 @@ have_breakfast = Scene("breakfast", "have_breakfast",
 """
 You decide to go to the class with greezy hair but you decide that you at least to need to feed yourself.
 You have a toast with a piece of bread and a cup of coffee.
-The question is - do you add beakon to your toast? (yes, no)
-
-
 You manage to catch the bus.
 You enter the classroom, you feel like you look a bit clumsy, but since you had breakfast you have a shinning smile.
-Everyone seem to admire you, you look fabulous, don't you agree?
+Everyone seem to admire you, you look fabulous, don't you agree? (yes/no)
 """)
 #Scene 2, Branch 1, Subbranch - 2
 knock_on_the_door = Scene("knocking on the door", "knock_on_the_door",
@@ -96,9 +104,12 @@ Day was followed by night, night by day until your landlord got fed up with you 
 Your life has went downhill ever since, you never manage to be as successful as your groupmates.
 """)
 
-generic_death = Scene("Death...", "death", "You died.")
 
 #Paths
+welcome.add_paths({
+    'yes':morning
+})
+
 morning.add_paths({
     'put on snooze':the_end_loser,
     'get up':getting_up,
@@ -114,16 +125,17 @@ getting_up.add_paths({
 have_a_shower.add_paths({
     'have breakfast': have_breakfast,
     'knock on the door': morning,
-    'leave the house like this': the_end_failure
+    'leave the house': the_end_failure
 })
 
 have_breakfast.add_paths({
-    'yes': the_end_loser,
+    'yes': the_end_winner,
     'no': the_end_loser
 })
 
 # Scenes
 SCENES = {
+    welcome.urlname : welcome,
     morning.urlname : morning,
     getting_up.urlname : getting_up,
     have_a_shower.urlname : have_a_shower,
@@ -133,4 +145,4 @@ SCENES = {
     the_end_failure.urlname : the_end_failure
 }
 
-START = morning
+START = welcome
