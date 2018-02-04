@@ -17,12 +17,13 @@ def game_post():
     userinput = request.form.get('userinput')
     if 'scene' in session:
         if userinput is None:
-            return render_template('error.html')
+            #launch pop out window with clarifications, return to the currentscene
+            return render_template('alert.html')
         else:
             currentscene = map.SCENES[session['scene']]
             nextscene = currentscene.go(userinput)
             if nextscene is None:
-                return render_template('error.html')
+                return render_template('alert.html')
             else:
                 session['scene'] = nextscene.urlname
                 return render_template('show_scene.html', scene=nextscene)

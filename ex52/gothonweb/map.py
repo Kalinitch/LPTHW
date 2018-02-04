@@ -23,7 +23,7 @@ In this game you are going to make...same big decisions.
 The outcome of the game depends on your choice.
 Foe each scene you are given a choice in brackets.
 To proceed from one scene to another please type in your choice below.
-Redy to begin? (type 'yes' to proceed)
+Ready to begin? (type 'yes' to proceed)
 """)
 
 # Scene 1 - Beginning
@@ -62,6 +62,12 @@ You manage to catch the bus.
 You enter the classroom, you feel like you look a bit clumsy, but since you had breakfast you have a shinning smile.
 Everyone seem to admire you, you look fabulous, don't you agree? (yes/no)
 """)
+#No
+neg = Scene("Wrong!", "neg",
+"""
+Top up your game! Without a bit of self-love you'll never make it to the narcissistic industry!
+""")
+
 #Scene 2, Branch 1, Subbranch - 2
 knock_on_the_door = Scene("knocking on the door", "knock_on_the_door",
 """
@@ -119,7 +125,8 @@ morning.add_paths({
 getting_up.add_paths({
     'have some rest': the_end_loser,
     'have a shower': have_a_shower,
-    'have breakfast': have_breakfast
+    'have breakfast': have_breakfast,
+    'leave the house': the_end_failure
 })
 
 have_a_shower.add_paths({
@@ -130,7 +137,7 @@ have_a_shower.add_paths({
 
 have_breakfast.add_paths({
     'yes': the_end_winner,
-    'no': the_end_loser
+    'no': neg
 })
 
 # Scenes
@@ -140,6 +147,7 @@ SCENES = {
     getting_up.urlname : getting_up,
     have_a_shower.urlname : have_a_shower,
     have_breakfast.urlname : have_breakfast,
+    neg.urlname: neg,
     the_end_winner.urlname : the_end_winner,
     the_end_loser.urlname : the_end_loser,
     the_end_failure.urlname : the_end_failure

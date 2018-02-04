@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<html>
+  <body>
+    <H1>Please type in your choice for the game to proceed! Type "ok" to proceed </H1>
+    <form onsubmit="return HandleSubmit();">
+      <input type="text" name="lastname" id="TextField">
+      <input name="OK" type="submit">
+    </form>
+  </body>
+</html>
+{% endblock %}
