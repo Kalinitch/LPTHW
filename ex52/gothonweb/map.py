@@ -131,7 +131,7 @@ getting_up.add_paths({
 
 have_a_shower.add_paths({
     'have breakfast': have_breakfast,
-    'knock on the door': morning,
+    'knock on the door': knock_on_the_door,
     'leave the house': the_end_failure
 })
 
